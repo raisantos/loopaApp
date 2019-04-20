@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfissionalService } from '../../services/domain/profissional.service';
+import { ProfissionalModel } from '../../models/profissional.model';
 
 /**
  * Generated class for the ProfissionaisPage page.
@@ -16,6 +17,8 @@ import { ProfissionalService } from '../../services/domain/profissional.service'
 })
 export class ProfissionaisPage {
 
+  items: ProfissionalModel[];
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -26,6 +29,7 @@ export class ProfissionaisPage {
     this.profissionalService.findAll()
       .subscribe(response => {
         console.log(response);
+        this.items = response;
       },
       error => {
         console.log(error)
