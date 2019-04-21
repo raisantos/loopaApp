@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 import { MenuController } from 'ionic-angular/components/app/menu-controller';
 import { CredenciaisModel } from '../../models/credenciais.model';
+import { AuthService } from '../../services/auth.service';
 
 @IonicPage()
 @Component({
@@ -12,7 +13,10 @@ export class HomePage {
 
   creds: CredenciaisModel = {email : "", senha : ""};
 
-  constructor(public navCtrl: NavController, public menu: MenuController) {
+  constructor(
+    public navCtrl: NavController, 
+    public menu: MenuController,
+    public auth: AuthService) {
 
   }
 
@@ -26,6 +30,11 @@ export class HomePage {
 
   login(){
     console.log(this.creds);
-    this.navCtrl.setRoot('ProfissionaisPage');
+    this.auth.authenticate(this.creds)
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('ProfissionaisPage');
+      }, 
+      error => {});
   }
 }
