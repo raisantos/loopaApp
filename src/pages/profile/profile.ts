@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { StorageService } from '../../services/storage.service';
+import { ClienteModel } from '../../models/cliente.model';
+import { ClienteService } from '../../services/domain/cliente.service';
 
 /**
  * Generated class for the ProfilePage page.
@@ -16,18 +18,24 @@ import { StorageService } from '../../services/storage.service';
 })
 export class ProfilePage {
 
-  email: string;
+  cliente: ClienteModel;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public storage: StorageService) {
+    public storage: StorageService,
+    public clienteService: ClienteService) {
   }
 
   ionViewDidLoad() {
     let localUser = this.storage.getLocalUser();
     if(localUser && localUser.email){
-      this.email = localUser.email;
+      this.clienteService.findByEmail(localUser.email)
+      .subscribe(response => {
+        this.cliente = response;
+        //buscar imagem
+      },
+      error => {});
     }
   }
 
