@@ -11,6 +11,8 @@ import { ProfissionalService } from '../services/domain/profissional.service';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 import { ClienteService } from '../services/domain/cliente.service';
+import { AuthInterceptorProvider } from '../interceptors/auth-interceptor';
+import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ClienteService } from '../services/domain/cliente.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProfissionalService,
     AuthService,
+    AuthInterceptorProvider,
+    ErrorInterceptorProvider,
     StorageService,
     ClienteService
   ]
