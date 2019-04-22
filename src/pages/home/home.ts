@@ -28,6 +28,15 @@ export class HomePage {
     this.menu.swipeEnable(true)
   }
 
+  ionViewDidEnter(){
+    this.auth.refreshToken()
+      .subscribe(response => {
+        this.auth.successfulLogin(response.headers.get('Authorization'));
+        this.navCtrl.setRoot('ProfissionaisPage');
+      }, 
+      error => {});
+  }
+
   login(){
     console.log(this.creds);
     this.auth.authenticate(this.creds)
