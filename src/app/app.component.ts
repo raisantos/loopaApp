@@ -27,6 +27,7 @@ export class MyApp {
       //{ title: 'Home', component: 'HomePage' }
       { title: 'Profile', component: 'ProfilePage' },
       { title: 'Profissionais', component: 'ProfissionaisPage' },
+      { title: 'Busca', component: 'BuscaPage' },
       { title: 'Logout', component: '' }
     ];
 
