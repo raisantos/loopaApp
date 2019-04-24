@@ -4,7 +4,7 @@ import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
 
 /**
- * Generated class for the BuscaPage page.
+ * Generated class for the ResultadosBuscaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,10 +12,10 @@ import { ProfissionalService } from '../../services/domain/profissional.service'
 
 @IonicPage()
 @Component({
-  selector: 'page-busca',
-  templateUrl: 'busca.html',
+  selector: 'page-resultados-busca',
+  templateUrl: 'resultados-busca.html',
 })
-export class BuscaPage {
+export class ResultadosBuscaPage {
 
   items: ProfissionalModel[];
 
@@ -26,10 +26,18 @@ export class BuscaPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad BuscaPage');
-  }
+    this.items = [
+      {
+        id: "1",
+        nome: "Jose"
 
-  showProfissionais(){
-    this.navCtrl.push('ResultadosBuscaPage');
-  }
+      },
+      {
+        id: "2",
+        nome: "Carlos"
+
+      }
+    ]
+  };
+
 }
