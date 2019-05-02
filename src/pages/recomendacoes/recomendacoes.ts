@@ -35,4 +35,7 @@ export class RecomendacoesPage {
       error => {});
   };
 
+  showDetail(profissionalId: string){
+    this.navCtrl.push('ProfissionalDetalhePage', {id: profissionalId});
+  }
 }
