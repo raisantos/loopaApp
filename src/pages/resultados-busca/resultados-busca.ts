@@ -37,7 +37,7 @@ export class ResultadosBuscaPage {
       error => {});
   };
 
-  showDetail(){
-    this.navCtrl.push('ProfissionalDetalhePage');
+  showDetail(profissionalId: string){
+    this.navCtrl.push('ProfissionalDetalhePage', {id: profissionalId});
   }
 }

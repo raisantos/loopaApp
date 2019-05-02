@@ -12,6 +12,10 @@ export class ProfissionalService{
     }
 
     findAll() : Observable<ProfissionalModel[]> {
-        return this.http.get<ProfissionalModel[]>(`${API_CONFIG.baseUrl}/profissionais`)
+        return this.http.get<ProfissionalModel[]>(`${API_CONFIG.baseUrl}/profissionais`);
+    }
+
+    findById(profissionalId: string){
+        return this.http.get<ProfissionalModel>(`${API_CONFIG.baseUrl}/profissionais/${profissionalId}`);
     }
 }
