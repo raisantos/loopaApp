@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
+import { ServicoModel } from '../../models/servico.model';
+import { ServicoService } from '../../services/domain/servico.service';
 
 /**
  * Generated class for the BuscaPage page.
@@ -18,18 +20,25 @@ import { ProfissionalService } from '../../services/domain/profissional.service'
 export class BuscaPage {
 
   items: ProfissionalModel[];
+  servicos: ServicoModel[];
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public profissionalService: ProfissionalService) {
+    public profissionalService: ProfissionalService,
+    public servicoService: ServicoService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuscaPage');
+    this.servicoService.findAll()
+      .subscribe(response => {
+        this.servicos = response;
+      },
+      error => {});
   }
 
-  showProfissionais(){
-    this.navCtrl.push('ResultadosBuscaPage');
+  showProfissionais(idServico: string){
+    this.navCtrl.push('ResultadosBuscaPage', {id: idServico});
   }
 }

@@ -15,8 +15,9 @@
 
 <ion-content padding>
     <ion-list>
-        <button ion-item (click)="showProfissionais()">
-          <h2>Encanador</h2>
+        <button ion-item *ngFor="let servico of servicos" (click)="showProfissionais(servico.idServico)">
+          <h3>{{servico.idServico}}</h3>
+          <h2>{{servico.descricao}}</h2>
         </button>
       </ion-list>
 </ion-content>

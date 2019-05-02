@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
+import { ServicoService } from '../../services/domain/servico.service';
+import { BuscaService } from '../../services/domain/busca.service';
 
 /**
  * Generated class for the ResultadosBuscaPage page.
@@ -22,22 +24,17 @@ export class ResultadosBuscaPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public profissionalService: ProfissionalService) {
+    public servicoService: ServicoService,
+    public buscaService: BuscaService) {
   }
 
   ionViewDidLoad() {
-    this.items = [
-      {
-        id: "1",
-        nome: "Jose"
-
+    let id_servico = this.navParams.get('id');
+    this.buscaService.search(id_servico)
+      .subscribe(response => {
+        this.items = response;
       },
-      {
-        id: "2",
-        nome: "Carlos"
-
-      }
-    ]
+      error => {});
   };
 
 }
