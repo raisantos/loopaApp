@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
 
@@ -18,11 +18,17 @@ import { ProfissionalService } from '../../services/domain/profissional.service'
 export class ProfissionalDetalhePage {
 
   item: ProfissionalModel;
+  rating: number;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public profissionalService: ProfissionalService) {
+    public profissionalService: ProfissionalService,
+    public events: Events) {
+      events.subscribe('star-rating:changed', (starRating) => {
+        console.log(starRating);
+        this.rating = starRating;
+      });
   }
 
   ionViewDidLoad() {

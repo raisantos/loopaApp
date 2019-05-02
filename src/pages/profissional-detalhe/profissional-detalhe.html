@@ -21,6 +21,15 @@
         {{item?.id}}
       </p>
     </ion-card-content>
+    <ionic3-star-rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#488aff" 
+        defaultColor = "#488aff"
+        readonly="false"
+        [rating]="3">
+  </ionic3-star-rating>
+  Selected rating: {{rating}}
   </ion-card>
 
 </ion-content>
