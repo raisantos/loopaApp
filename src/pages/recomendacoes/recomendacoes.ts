@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
+import { RecomendacaoService } from '../../services/domain/recomendacao.service';
 
 /**
  * Generated class for the RecomendacoesPage page.
@@ -22,22 +23,16 @@ export class RecomendacoesPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public profissionalService: ProfissionalService) {
+    public profissionalService: ProfissionalService,
+    public recomendacaoService: RecomendacaoService) {
   }
 
   ionViewDidLoad() {
-    this.items = [
-      {
-        id: "1",
-        nome: "Jose"
-
+    this.recomendacaoService.recomendacoes()
+      .subscribe(response => {
+        this.items = response;
       },
-      {
-        id: "2",
-        nome: "Carlos"
-
-      }
-    ]
+      error => {});
   };
 
 }

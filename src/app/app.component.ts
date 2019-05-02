@@ -28,6 +28,7 @@ export class MyApp {
       { title: 'Profile', component: 'ProfilePage' },
       { title: 'Profissionais', component: 'ProfissionaisPage' },
       { title: 'Busca', component: 'BuscaPage' },
+      { title: 'Recomendações', component: 'RecomendacoesPage' },
       { title: 'Logout', component: '' }
     ];
 
