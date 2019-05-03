@@ -32,12 +32,17 @@ export class ResultadosBuscaPage {
     let id_servico = this.navParams.get('id');
     this.buscaService.search(id_servico)
       .subscribe(response => {
+        console.log(response);
         this.items = response;
       },
       error => {});
   };
 
-  showDetail(profissionalId: string){
-    this.navCtrl.push('ProfissionalDetalhePage', {id: profissionalId});
+  //showDetail(profissionalId: string){
+  //  this.navCtrl.push('ProfissionalDetalhePage', {id: profissionalId});
+  //}
+
+  showDetail(profissional: ProfissionalModel){
+    this.navCtrl.push('ProfissionalDetalhePage', {id: profissional});
   }
 }

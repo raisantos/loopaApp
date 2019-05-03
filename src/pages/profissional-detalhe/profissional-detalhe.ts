@@ -31,7 +31,7 @@ export class ProfissionalDetalhePage {
       });
   }
 
-  ionViewDidLoad() {
+  /*ionViewDidLoad() {
     console.log('ionViewDidLoad ProfissionalDetalhePage');
     let profissionalId = this.navParams.get('id');
     this.profissionalService.findById(profissionalId)
@@ -39,6 +39,17 @@ export class ProfissionalDetalhePage {
         this.item = response;
       },
       error => {});
+  }*/
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ProfissionalDetalhePage');
+    let profissional = this.navParams.get('id');
+    this.item = profissional;
+    //this.profissionalService.findById(profissionalId)
+      //.subscribe(response => {
+        //this.item = response;
+      //},
+      //error => {});
   }
 
 }
