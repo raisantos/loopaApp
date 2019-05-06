@@ -43,6 +43,6 @@ export class ResultadosBuscaPage {
   //}
 
   showDetail(profissional: ProfissionalModel){
-    this.navCtrl.push('ProfissionalDetalhePage', {id: profissional});
+    this.navCtrl.push('ProfissionalDetalhePage', {prof: profissional});
   }
 }

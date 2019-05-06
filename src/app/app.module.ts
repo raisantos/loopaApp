@@ -16,6 +16,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptor';
 import { BuscaService } from '../services/domain/busca.service';
 import { RecomendacaoService } from '../services/domain/recomendacao.service';
 import { ServicoService } from '../services/domain/servico.service';
+import { AvaliacaoService } from '../services/domain/avaliacao.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ServicoService } from '../services/domain/servico.service';
     ClienteService,
     BuscaService,
     RecomendacaoService,
-    ServicoService
+    ServicoService,
+    AvaliacaoService
   ]
 })
 export class AppModule {}
