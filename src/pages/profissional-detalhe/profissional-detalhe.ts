@@ -8,6 +8,9 @@ import { ClienteService } from '../../services/domain/cliente.service';
 import { StorageService } from '../../services/storage.service';
 import { ClienteModel } from '../../models/cliente.model';
 import { AvaliacaoModel } from '../../models/avaliacao.model';
+import { Geolocation } from '@ionic-native/geolocation';
+ 
+declare var google;
 
 /**
  * Generated class for the ProfissionalDetalhePage page.
@@ -30,6 +33,7 @@ export class ProfissionalDetalhePage {
   method: string;
   nota: string;
   existe: string;
+  map: any;
 
   constructor(
     public navCtrl: NavController, 
@@ -39,7 +43,8 @@ export class ProfissionalDetalhePage {
     public alertCtrl: AlertController,
     public avaliacaoService: AvaliacaoService, 
     public clienteService: ClienteService,
-    public storage: StorageService) {
+    public storage: StorageService,
+    private geolocation: Geolocation) {
     
   }
 
@@ -54,7 +59,7 @@ export class ProfissionalDetalhePage {
   }*/
 
   ionViewWillEnter() {
-    console.log('ionViewDidEnter ProfissionalDetalhePage');
+    console.log('ionViewWillEnter ProfissionalDetalhePage');
 
     this.events.unsubscribe('star-rating:changed');
     
@@ -116,4 +121,45 @@ export class ProfissionalDetalhePage {
       //error => {});
   }
 
+  ionViewDidEnter(){
+    console.log('ionViewDidEnter ProfissionalDetalhePage');
+    let profissional = this.navParams.get('prof');
+    this.item = profissional;
+    console.log(this.item);
+    console.log(this.item.location.lat, this.item.location.lon);
+    const position = new google.maps.LatLng(this.item.location.lat, this.item.location.lon);
+
+    const mapOptions = {
+      zoom: 18,
+      center: position
+    }
+
+    this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+    const marker = new google.maps.Marker({
+      position: position,
+      map: this.map
+    });
+  }
+  /*ionViewDidLoad() {
+    this.geolocation.getCurrentPosition()
+      .then((resp) => {
+        const position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
+ 
+        const mapOptions = {
+          zoom: 18,
+          center: position
+        }
+ 
+        this.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+ 
+        const marker = new google.maps.Marker({
+          position: position,
+          map: this.map
+        });
+ 
+      }).catch((error) => {
+        console.log('Erro ao recuperar sua posição', error);
+      });
+    }*/
 }
