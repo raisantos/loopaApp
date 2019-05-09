@@ -27,4 +27,15 @@ export class AvaliacaoService {
             }
         ); 
     }
+
+    update(obj: AvaliacaoModel, idAvaliacao: string, idProfissional: string){
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/avaliacoes/${idAvaliacao}/${idProfissional}`,
+            obj,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        );
+    }
 }

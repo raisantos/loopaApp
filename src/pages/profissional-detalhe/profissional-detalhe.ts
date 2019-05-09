@@ -29,6 +29,7 @@ export class ProfissionalDetalhePage {
   rating: string;
   method: string;
   nota: string;
+  existe: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -52,12 +53,14 @@ export class ProfissionalDetalhePage {
       error => {});
   }*/
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfissionalDetalhePage');
+  ionViewWillEnter() {
+    console.log('ionViewDidEnter ProfissionalDetalhePage');
 
+    this.events.unsubscribe('star-rating:changed');
+    
     let profissional = this.navParams.get('prof');
     this.item = profissional;
-
+    //this.existe = "false";
     this.avaliacaoService.findByClienteAndProfissional(this.item.id )
       .subscribe(response => {
         console.log('response');
@@ -66,43 +69,45 @@ export class ProfissionalDetalhePage {
         console.log('avaliacao buscada no banco');
         if(this.avaliacao){
           this.rating = this.avaliacao.nota;
-          this.method = 'put';
+          this.existe = "true";
         }
         else{
           this.rating = '0';
-          this.method = 'post';
+          this.existe = "false";
         }
         console.log(this.avaliacao);
         console.log(this.rating);
         console.log(this.method);
       });
-    
-    this.events.subscribe('star-rating:changed', (starRating) => {
-      console.log(starRating);
-      this.rating = starRating;
-      this.nota = this.rating;
 
-      if(this.method == 'post'){
-        this.avaliacaoService.insert(this.nota, this.item.id)
-        .subscribe(response => {
-          let alert = this.alertCtrl.create({
-            title: 'Avaliação',
-            message: 'Você avaliou este profissional com nota ' + this.rating,
-            enableBackdropDismiss: false,
-            buttons: [
-                {
-                    text: 'Ok'
-                }
-            ]
-          });
-          alert.present();
-        },
-        error => {});
-      }
-      //this.avaliacaoService.insert();
-
-      
-    });
+      this.events.subscribe('star-rating:changed', (starRating) => {
+        this.existe = "true";
+        console.log("star rating = " + starRating);
+        this.rating = starRating;
+        this.nota = this.rating;
+  
+        //if(this.method == 'post'){
+          this.avaliacaoService.insert(this.nota, this.item.id)
+          .subscribe(response => {
+            //this.existe = "true";
+            let alert = this.alertCtrl.create({
+              title: 'Avaliação',
+              message: 'Você avaliou este profissional com nota ' + this.rating,
+              enableBackdropDismiss: false,
+              buttons: [
+                  {
+                      text: 'Ok'
+                  }
+              ]
+            });
+            alert.present();
+          },
+          error => {});
+        //}
+        //this.avaliacaoService.insert();
+  
+        
+      });
 
     //this.profissionalService.findById(profissionalId)
       //.subscribe(response => {
