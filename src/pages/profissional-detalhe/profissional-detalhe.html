@@ -12,33 +12,36 @@
 
 <ion-content padding>
   <ion-card>
-    <img src="assets/imgs/perfil.png"/>
-    <ion-card-content>
+    <ion-avatar>
+      <img class = "circle" src="assets/imgs/perfil.png"/>
+    </ion-avatar>
+    
+    <ion-card-content class="center">
       <ion-card-title>
         {{item?.nome}}
       </ion-card-title>
       <p>
-        {{item?.id}}
+        E-mail: {{item?.email}}
       </p>
       <p>
-        {{item?.email}}
-      </p>
-      <p>
-        {{item?.telefone}}
+        Telefone: {{item?.telefone}}
       </p>
       <p>
         {{item?.location.lat}}
       </p>
+      <div class="center">
+        <p>Avalie este profissional: </p>
+        <ionic3-star-rating
+          activeIcon = "ios-star"
+          defaultIcon = "ios-star-outline"
+          activeColor = "#488aff" 
+          defaultColor = "#488aff"
+          [readonly]="existe"
+          [rating]="rating">
+        </ionic3-star-rating>
+        Selected rating: {{rating}}
+      </div>
     </ion-card-content>
-    <ionic3-star-rating
-        activeIcon = "ios-star"
-        defaultIcon = "ios-star-outline"
-        activeColor = "#488aff" 
-        defaultColor = "#488aff"
-        [readonly]="existe"
-        [rating]="rating">
-  </ionic3-star-rating>
-  Selected rating: {{rating}}
   </ion-card>
 
 </ion-content>

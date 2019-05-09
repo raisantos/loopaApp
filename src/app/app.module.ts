@@ -17,6 +17,7 @@ import { BuscaService } from '../services/domain/busca.service';
 import { RecomendacaoService } from '../services/domain/recomendacao.service';
 import { ServicoService } from '../services/domain/servico.service';
 import { AvaliacaoService } from '../services/domain/avaliacao.service';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AvaliacaoService } from '../services/domain/avaliacao.service';
     BuscaService,
     RecomendacaoService,
     ServicoService,
-    AvaliacaoService
+    AvaliacaoService,
+    Geolocation
   ]
 })
 export class AppModule {}

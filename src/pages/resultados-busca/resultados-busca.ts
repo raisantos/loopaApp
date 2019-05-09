@@ -4,6 +4,7 @@ import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
 import { ServicoService } from '../../services/domain/servico.service';
 import { BuscaService } from '../../services/domain/busca.service';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the ResultadosBuscaPage page.
@@ -20,22 +21,38 @@ import { BuscaService } from '../../services/domain/busca.service';
 export class ResultadosBuscaPage {
 
   items: ProfissionalModel[];
+  latitude: number;
+  longitude: number;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public servicoService: ServicoService,
-    public buscaService: BuscaService) {
+    public buscaService: BuscaService,
+    private geolocation: Geolocation) {
   }
 
   ionViewDidLoad() {
     let id_servico = this.navParams.get('id');
-    this.buscaService.search(id_servico)
+    
+    this.geolocation.getCurrentPosition()
+    .then((resp) => {
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+
+      console.log(this.latitude);
+      console.log(this.longitude);
+
+      this.buscaService.search(id_servico, this.latitude, this.longitude)
       .subscribe(response => {
         console.log(response);
         this.items = response;
       },
       error => {});
+    }).catch((error) => {
+      console.log('Erro ao recuperar sua posição', error);
+    });
+    
   };
 
   //showDetail(profissionalId: string){

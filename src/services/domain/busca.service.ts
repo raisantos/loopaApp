@@ -7,17 +7,13 @@ import { ProfissionalModel } from "../../models/profissional.model";
 @Injectable()
 export class BuscaService {
 
-    latitude: number;
-    longitude: number;
-
+    
     constructor(
         public http: HttpClient
         ) {
     }
 
-    search(tipoProfissional: string) : Observable<ProfissionalModel[]> {
-        this.latitude = -0.32015;
-        this.longitude = 0.15460;
-        return this.http.get<ProfissionalModel[]>(`${API_CONFIG.baseUrl}/busca/${tipoProfissional}/${this.latitude}/${this.longitude}`);
+    search(tipoProfissional: string, latitude: number, longitude: number) : Observable<ProfissionalModel[]> {
+        return this.http.get<ProfissionalModel[]>(`${API_CONFIG.baseUrl}/busca/${tipoProfissional}/${latitude}/${longitude}`);
     }
 }
