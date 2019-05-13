@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfissionalModel } from '../../models/profissional.model';
-import { ProfissionalService } from '../../services/domain/profissional.service';
 import { ServicoService } from '../../services/domain/servico.service';
 import { BuscaService } from '../../services/domain/busca.service';
 import { Geolocation } from '@ionic-native/geolocation';
