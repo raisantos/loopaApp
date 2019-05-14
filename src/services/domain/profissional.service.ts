@@ -18,4 +18,8 @@ export class ProfissionalService{
     findById(profissionalId: string){
         return this.http.get<ProfissionalModel>(`${API_CONFIG.baseUrl}/profissionais/${profissionalId}`);
     }
+
+    checkIn(latitude: number, longitude: number){
+
+    }
 }

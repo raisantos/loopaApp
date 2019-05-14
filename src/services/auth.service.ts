@@ -6,6 +6,8 @@ import { StorageService } from "./storage.service";
 import { JwtHelper } from 'angular2-jwt';
 //import { CartService } from "./domain/cart.service";
 import { CredenciaisModel } from "../models/credenciais.model";
+import { Observable } from "rxjs/Rx";
+
 
 @Injectable()
 export class AuthService {
@@ -40,13 +42,17 @@ export class AuthService {
             });
     }
 
+    getAuthorith(): Observable<any>{
+        return this.http.get<any>(`${API_CONFIG.baseUrl}/auth/authorith`);
+    }
+
     successfulLogin(authorizationValue : string) {
-        let tok = authorizationValue.substring(7);
-        let user : LocalUser = {
-            token: tok,
-            email: this.jwtHelper.decodeToken(tok).sub
-        };
-        this.storage.setLocalUser(user);
+          let tok = authorizationValue.substring(7);
+          let user : LocalUser = {
+              token: tok,
+              email: this.jwtHelper.decodeToken(tok).sub
+          };
+          this.storage.setLocalUser(user);
         //this.cartService.createOrClearCart();
     }
 

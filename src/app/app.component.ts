@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   templateUrl: 'app.html'
@@ -12,25 +13,35 @@ export class MyApp {
 
   rootPage: string = 'HomePage';
 
-  pages: Array<{title: string, component: string}>;
+  role: string;
+
+  pages: Array<{title: string, component: string, role: string}>;
 
   constructor(
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public auth: AuthService
+    public auth: AuthService,
+    public events: Events,
+    public storage: StorageService
     ) {
     this.initializeApp();
 
+    events.subscribe('user:signedIn', (userEventData) => {
+      this.role = storage.getAuthorith();
+      console.log('role');
+      console.log(this.role);
+     });
     // used for an example of ngFor and navigation
     this.pages = [
       //{ title: 'Home', component: 'HomePage' }
-      { title: 'Profile', component: 'ProfilePage' },
-      { title: 'Profissionais', component: 'ProfissionaisPage' },
-      { title: 'Busca', component: 'BuscaPage' },
-      { title: 'Recomendações', component: 'RecomendacoesPage' },
-      { title: 'Atendimentos', component: 'AtendimentosPage' },
-      { title: 'Logout', component: '' }
+      { title: 'Profile', component: 'ProfilePage', role: 'ROLE_CLIENTE' },
+      { title: 'Profissionais', component: 'ProfissionaisPage', role: 'ROLE_CLIENTE' },
+      { title: 'Busca', component: 'BuscaPage', role: 'ROLE_CLIENTE' },
+      { title: 'Recomendações', component: 'RecomendacoesPage', role: 'ROLE_CLIENTE' },
+      { title: 'Atendimentos', component: 'AtendimentosPage', role: 'ROLE_CLIENTE' },
+      { title: 'Logout', component: '', role: 'ROLE_CLIENTE' },
+      { title: 'Logout', component: '', role: 'ROLE_PROFISSIONAL' }
     ];
 
   }

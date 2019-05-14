@@ -23,4 +23,13 @@ export class StorageService {
             localStorage.setItem(STORAGE_KEYS.localUser, JSON.stringify(obj));
         }
     }
+
+    setAuthorith(obj : string){
+        localStorage.setItem(STORAGE_KEYS.authorith, obj);
+    }
+
+    getAuthorith(){
+        let auth = localStorage.getItem(STORAGE_KEYS.authorith);
+        return auth;
+    }
 }
