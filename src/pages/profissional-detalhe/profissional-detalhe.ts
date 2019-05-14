@@ -8,6 +8,7 @@ import { ClienteService } from '../../services/domain/cliente.service';
 import { StorageService } from '../../services/storage.service';
 import { ClienteModel } from '../../models/cliente.model';
 import { AvaliacaoModel } from '../../models/avaliacao.model';
+import { AtendimentoService } from '../../services/domain/atendimento.service';
  
 declare var google;
 
@@ -42,7 +43,8 @@ export class ProfissionalDetalhePage {
     public alertCtrl: AlertController,
     public avaliacaoService: AvaliacaoService, 
     public clienteService: ClienteService,
-    public storage: StorageService) {
+    public storage: StorageService,
+    public atendimentoService: AtendimentoService) {
     
   }
 
@@ -128,6 +130,24 @@ export class ProfissionalDetalhePage {
     const marker = new google.maps.Marker({
       position: position,
       map: this.map
+    });
+  }
+
+  gerarAtendimento(){
+    this.atendimentoService.insert(this.item.id)
+    .subscribe(response => {
+      let alert = this.alertCtrl.create({
+        title: 'Atendimento',
+        message: 'Atendimento Solicitado com Sucesso. Apresente o Código Gerado ao Profissional. ' + 
+        'Você pode conferir os códigos gerados na aba de Atendimentos.',
+        enableBackdropDismiss: false,
+        buttons: [
+            {
+                text: 'Ok'
+            }
+        ]
+      });
+      alert.present();
     });
   }
 }

@@ -29,6 +29,7 @@ export class MyApp {
       { title: 'Profissionais', component: 'ProfissionaisPage' },
       { title: 'Busca', component: 'BuscaPage' },
       { title: 'Recomendações', component: 'RecomendacoesPage' },
+      { title: 'Atendimentos', component: 'AtendimentosPage' },
       { title: 'Logout', component: '' }
     ];
 
