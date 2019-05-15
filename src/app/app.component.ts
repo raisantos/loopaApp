@@ -36,6 +36,7 @@ export class MyApp {
     this.pages = [
       //{ title: 'Home', component: 'HomePage' }
       { title: 'Profile', component: 'ProfilePage', role: 'ROLE_CLIENTE' },
+      { title: 'Checkin', component: 'CheckinPage', role: 'ROLE_PROFISSIONAL' },
       { title: 'Profissionais', component: 'ProfissionaisPage', role: 'ROLE_CLIENTE' },
       { title: 'Busca', component: 'BuscaPage', role: 'ROLE_CLIENTE' },
       { title: 'Recomendações', component: 'RecomendacoesPage', role: 'ROLE_CLIENTE' },

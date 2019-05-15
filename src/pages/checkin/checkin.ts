@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { ProfissionalService } from '../../services/domain/profissional.service';
 
 /**
  * Generated class for the CheckinPage page.
@@ -22,7 +23,8 @@ export class CheckinPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private geolocation: Geolocation) {
+    private geolocation: Geolocation,
+    public profissionalService: ProfissionalService) {
   }
 
   ionViewDidLoad() {
@@ -38,7 +40,10 @@ export class CheckinPage {
       console.log(this.latitude);
       console.log(this.longitude);
 
-      
+      this.profissionalService.checkIn(this.latitude, this.longitude)
+      .subscribe(response => {
+        console.log('checkin realizado');
+      }, error => {});
     }).catch((error) => {
       console.log('Erro ao recuperar sua posição', error);
     });

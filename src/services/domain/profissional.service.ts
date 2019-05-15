@@ -20,6 +20,12 @@ export class ProfissionalService{
     }
 
     checkIn(latitude: number, longitude: number){
-
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/profissionais/checkin/${latitude}/${longitude}`,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        );
     }
 }
