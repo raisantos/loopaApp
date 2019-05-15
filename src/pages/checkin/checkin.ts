@@ -4,6 +4,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { ProfissionalService } from '../../services/domain/profissional.service';
 import { ProfissionalModel } from '../../models/profissional.model';
 import { StorageService } from '../../services/storage.service';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
  * Generated class for the CheckinPage page.
@@ -28,6 +29,7 @@ export class CheckinPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     private geolocation: Geolocation,
     public storage: StorageService,
     public profissionalService: ProfissionalService) {
@@ -74,6 +76,22 @@ export class CheckinPage {
       this.profissionalService.checkIn(this.latitude, this.longitude)
       .subscribe(response => {
         console.log('checkin realizado');
+        this.checkInButtonDisable = true;
+        this.checkOutButtonDisable = false;
+
+        let alert = this.alertCtrl.create({
+          title: 'Check-In',
+          message: 'Seu check-in foi realizado com sucesso. Seu perfil será exibido nos resultados ' +
+          'de buscas de clientes.',
+          enableBackdropDismiss: false,
+          buttons: [
+              {
+                  text: 'Ok'
+              }
+          ]
+        });
+        alert.present();
+      
       }, error => {});
     }).catch((error) => {
       console.log('Erro ao recuperar sua posição', error);
@@ -81,6 +99,24 @@ export class CheckinPage {
   }
 
   checkOut(){
+    this.profissionalService.checkOut()
+      .subscribe(response => {
+        console.log('checkout realizado');
+        this.checkInButtonDisable = false;
+        this.checkOutButtonDisable = true;
 
+        let alert = this.alertCtrl.create({
+          title: 'Check-Out',
+          message: 'Seu check-out foi realizado com sucesso. Seu perfil não será exibido nos resultados ' +
+          'de buscas de clientes.',
+          enableBackdropDismiss: false,
+          buttons: [
+              {
+                  text: 'Ok'
+              }
+          ]
+        });
+        alert.present();
+      }, error => {})
   }
 }

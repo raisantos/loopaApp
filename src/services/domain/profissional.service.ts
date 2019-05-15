@@ -32,4 +32,14 @@ export class ProfissionalService{
             }
         );
     }
+
+    checkOut(){
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/profissionais/checkout`,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        );
+    }
 }
