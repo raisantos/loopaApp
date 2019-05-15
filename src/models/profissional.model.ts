@@ -4,4 +4,5 @@ export interface ProfissionalModel{
     email: string;
     telefone: string;
     location: any;
+    status: string;
 }

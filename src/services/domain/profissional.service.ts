@@ -19,6 +19,10 @@ export class ProfissionalService{
         return this.http.get<ProfissionalModel>(`${API_CONFIG.baseUrl}/profissionais/${profissionalId}`);
     }
 
+    findByEmail(email: string) : Observable<ProfissionalModel> {
+        return this.http.get<ProfissionalModel>(`${API_CONFIG.baseUrl}/profissionais/email?value=${email}`);
+    }
+
     checkIn(latitude: number, longitude: number){
         return this.http.put(
             `${API_CONFIG.baseUrl}/profissionais/checkin/${latitude}/${longitude}`,

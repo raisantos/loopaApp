@@ -6,17 +6,20 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Checkin</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Check-In / Check-Out</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
 
-  <button ion-item (click)="checkIn()">
+  <button ion-item [disabled]="checkInButtonDisable" (click)="checkIn()">
     CHECK-IN
   </button>
 
-  <button ion-item (click)="checkOut()">
+  <button ion-item [disabled]="checkOutButtonDisable" (click)="checkOut()">
     CHECK-OUT
   </button>
 </ion-content>
