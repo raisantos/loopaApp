@@ -54,9 +54,14 @@ export class HomePage {
             console.log(this.storage.getAuthorith());
             console.log(this.storage.getLocalUser());
 
-            this.events.publish('user:signedIn', this.storage.getAuthorith);  
+            this.events.publish('user:signedIn', this.storage.getAuthorith());
+            if(this.storage.getAuthorith() == 'ROLE_CLIENTE'){
+              this.navCtrl.setRoot('ProfissionaisPage');
+            }
+            else if(this.storage.getAuthorith() == 'ROLE_PROFISSIONAL'){
+              this.navCtrl.setRoot('CheckinPage');
+            }
           }, error => {});
-        this.navCtrl.setRoot('ProfissionaisPage');
       }, 
       error => {});
   }
