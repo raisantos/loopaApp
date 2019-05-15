@@ -69,4 +69,8 @@ export class HomePage {
   signup(){
     this.navCtrl.push('SignupPage');
   }
+
+  signupProfissional(){
+    this.navCtrl.push('SignupProfissionalPage');
+  }
 }

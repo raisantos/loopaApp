@@ -23,6 +23,17 @@ export class ProfissionalService{
         return this.http.get<ProfissionalModel>(`${API_CONFIG.baseUrl}/profissionais/email?value=${email}`);
     }
 
+    insert(obj : ProfissionalModel) {
+        return this.http.post(
+            `${API_CONFIG.baseUrl}/profissionais`, 
+            obj,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        ); 
+    }
+
     checkIn(latitude: number, longitude: number){
         return this.http.put(
             `${API_CONFIG.baseUrl}/profissionais/checkin/${latitude}/${longitude}`,
