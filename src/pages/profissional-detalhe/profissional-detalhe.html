@@ -22,7 +22,7 @@
       </ion-card-title>
       
       <p>
-        Telefone: {{item?.telefone}}
+        Contato: {{item?.telefone}}
       </p>
       
       <button ion-button block (click)="gerarAtendimento()"> Gerar Código de Atendimento </button>
@@ -37,12 +37,10 @@
           [readonly]="existe"
           [rating]="rating">
         </ionic3-star-rating>
-        Selected rating: {{rating}}
       </div>
-      
     </ion-card-content>
+
   </ion-card>
 
   <div #map id="map"></div>
-
 </ion-content>
