@@ -14,10 +14,11 @@
 </ion-header>
 
 <ion-content padding>
+    <p class="paragraph" margin-left>Selecione o tipo de profissional procurado:</p>
+    
     <ion-list>
-        <button ion-item *ngFor="let servico of servicos" (click)="showProfissionais(servico.idServico)">
-          <h3>{{servico.idServico}}</h3>
-          <h2>{{servico.descricao}}</h2>
+        <button ion-button block *ngFor="let servico of servicos" (click)="showProfissionais(servico.idServico)">
+          {{servico.descricao}}
         </button>
       </ion-list>
 </ion-content>
