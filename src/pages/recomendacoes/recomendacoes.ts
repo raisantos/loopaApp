@@ -4,6 +4,8 @@ import { ProfissionalModel } from '../../models/profissional.model';
 import { ProfissionalService } from '../../services/domain/profissional.service';
 import { RecomendacaoService } from '../../services/domain/recomendacao.service';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+
 
 /**
  * Generated class for the RecomendacoesPage page.
@@ -20,12 +22,14 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class RecomendacoesPage {
 
   items: ProfissionalModel[];
+  hasRecommendations: boolean;
   latitude: number;
   longitude: number;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public profissionalService: ProfissionalService,
     public recomendacaoService: RecomendacaoService,
     private geolocation: Geolocation) {
@@ -44,6 +48,19 @@ export class RecomendacoesPage {
       .subscribe(response => {
         console.log(response);
         this.items = response;
+        if(this.items == null){
+          let alert = this.alertCtrl.create({
+            title: 'Recomendações',
+            message: 'No momento não há recomendações para você. Avalie profissionais para receber recomendações.',
+            enableBackdropDismiss: false,
+            buttons: [
+                {
+                    text: 'Ok'
+                }
+            ]
+          });
+          alert.present();
+        }
       },
       error => {});
     }).catch((error) => {
