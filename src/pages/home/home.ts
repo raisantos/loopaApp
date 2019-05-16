@@ -56,7 +56,7 @@ export class HomePage {
 
             this.events.publish('user:signedIn', this.storage.getAuthorith());
             if(this.storage.getAuthorith() == 'ROLE_CLIENTE'){
-              this.navCtrl.setRoot('ProfissionaisPage');
+              this.navCtrl.setRoot('BuscaPage');
             }
             else if(this.storage.getAuthorith() == 'ROLE_PROFISSIONAL'){
               this.navCtrl.setRoot('CheckinPage');

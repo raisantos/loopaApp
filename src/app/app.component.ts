@@ -35,12 +35,11 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       //{ title: 'Home', component: 'HomePage' }
-      { title: 'Profile', component: 'ProfilePage', role: 'ROLE_CLIENTE' },
       { title: 'Checkin', component: 'CheckinPage', role: 'ROLE_PROFISSIONAL' },
-      { title: 'Profissionais', component: 'ProfissionaisPage', role: 'ROLE_CLIENTE' },
       { title: 'Busca', component: 'BuscaPage', role: 'ROLE_CLIENTE' },
       { title: 'Recomendações', component: 'RecomendacoesPage', role: 'ROLE_CLIENTE' },
       { title: 'Atendimentos', component: 'AtendimentosPage', role: 'ROLE_CLIENTE' },
+      { title: 'Perfil', component: 'ProfilePage', role: 'ROLE_CLIENTE' },
       { title: 'Logout', component: '', role: 'ROLE_CLIENTE' },
       { title: 'Logout', component: '', role: 'ROLE_PROFISSIONAL' }
     ];
