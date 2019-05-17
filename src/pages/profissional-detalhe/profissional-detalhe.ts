@@ -34,6 +34,7 @@ export class ProfissionalDetalhePage {
   nota: string;
   existe: string;
   map: any;
+  mediaProfissional: number;
 
   constructor(
     public navCtrl: NavController, 
@@ -66,6 +67,7 @@ export class ProfissionalDetalhePage {
     let profissional = this.navParams.get('prof');
     this.item = profissional;
     //this.existe = "false";
+
     this.avaliacaoService.findByClienteAndProfissional(this.item.id )
       .subscribe(response => {
         console.log('response');
@@ -84,6 +86,13 @@ export class ProfissionalDetalhePage {
         console.log(this.rating);
         console.log(this.method);
       });
+
+      console.log('average');
+      this.avaliacaoService.getAverageProfissional(this.item.id)
+      .subscribe(response => {
+        console.log(response);
+        this.mediaProfissional = response;
+      }, error => {});
 
       this.events.subscribe('star-rating:changed', (starRating) => {
         this.existe = "true";

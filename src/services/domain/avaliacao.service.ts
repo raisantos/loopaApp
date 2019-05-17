@@ -38,4 +38,8 @@ export class AvaliacaoService {
             }
         );
     }
+
+    getAverageProfissional(idProfissional: string){
+        return this.http.get<number>(`${API_CONFIG.baseUrl}/avaliacoes/media/${idProfissional}`);
+    }
 }
