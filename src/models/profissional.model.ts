@@ -5,4 +5,5 @@ export interface ProfissionalModel{
     telefone: string;
     location: any;
     status: string;
+    descricao: string;
 }
