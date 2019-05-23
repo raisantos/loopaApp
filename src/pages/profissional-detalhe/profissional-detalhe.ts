@@ -87,12 +87,12 @@ export class ProfissionalDetalhePage {
         console.log(this.method);
       });
 
-      console.log('average');
+      /*console.log('average');
       this.avaliacaoService.getAverageProfissional(this.item.id)
       .subscribe(response => {
         console.log(response);
         this.mediaProfissional = response;
-      }, error => {});
+      }, error => {});*/
 
       this.events.subscribe('star-rating:changed', (starRating) => {
         this.existe = "true";
