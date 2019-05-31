@@ -39,7 +39,9 @@ export class MyApp {
       { title: 'Busca', component: 'BuscaPage', role: 'ROLE_CLIENTE' },
       { title: 'Recomendações', component: 'RecomendacoesPage', role: 'ROLE_CLIENTE' },
       { title: 'Atendimentos', component: 'AtendimentosPage', role: 'ROLE_CLIENTE' },
+      { title: 'Atendimentos', component: 'AtendimentosProfissionalPage', role: 'ROLE_PROFISSIONAL' },
       { title: 'Perfil', component: 'ProfilePage', role: 'ROLE_CLIENTE' },
+      { title: 'Perfil', component: 'ProfileProfissionalPage', role: 'ROLE_PROFISSIONAL' },
       { title: 'Logout', component: '', role: 'ROLE_CLIENTE' },
       { title: 'Logout', component: '', role: 'ROLE_PROFISSIONAL' }
     ];
