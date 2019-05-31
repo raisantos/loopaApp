@@ -43,6 +43,17 @@ export class ClienteService {
         ); 
     }
 
+    update(id: string, obj : ClienteModel){
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/clientes/${id}`, 
+            obj,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        );
+    }
+
     /*uploadPicture(picture) {
         let pictureBlob = this.imageUtilService.dataUriToBlob(picture);
         let formData : FormData = new FormData();

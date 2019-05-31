@@ -46,4 +46,8 @@ export class ProfilePage {
     }
   }
 
+  editar(){
+    this.navCtrl.push('EditarPerfilPage', {cliente: this.cliente});
+  }
+
 }

@@ -17,6 +17,10 @@
   <ion-avatar>
     <img class="circle" src="assets/imgs/perfil.png">
   </ion-avatar>
+  <p text-center>{{cliente?.id}}</p>
   <h2 text-center>{{cliente?.nome}}</h2>
   <p text-center>{{cliente?.email}}</p>
+  <p text-center>{{cliente?.telefone}}</p>
+  <p text-center>{{cliente?.endereco}}</p>
+  <button ion-button block (click)="editar()"> Editar </button>
 </ion-content>
