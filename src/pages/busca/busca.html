@@ -17,7 +17,7 @@
     <p class="paragraph" margin-left>Selecione o tipo de profissional procurado:</p>
     
     <ion-list>
-        <button ion-button block *ngFor="let servico of servicos" (click)="showProfissionais(servico.idServico)">
+        <button ion-button block *ngFor="let servico of servicos" (click)="showProfissionais(servico.idServico, servico.descricao)">
           {{servico.descricao}}
         </button>
       </ion-list>

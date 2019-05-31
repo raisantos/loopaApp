@@ -38,7 +38,7 @@ export class BuscaPage {
       error => {});
   }
 
-  showProfissionais(idServico: string){
-    this.navCtrl.push('ResultadosBuscaPage', {id: idServico});
+  showProfissionais(idServico: string, descricaoServico: string){
+    this.navCtrl.push('ResultadosBuscaPage', {id: idServico, descricao: descricaoServico});
   }
 }

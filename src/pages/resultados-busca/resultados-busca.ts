@@ -22,6 +22,7 @@ export class ResultadosBuscaPage {
   items: ProfissionalModel[];
   latitude: number;
   longitude: number;
+  tipoProfissional: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -29,6 +30,8 @@ export class ResultadosBuscaPage {
     public servicoService: ServicoService,
     public buscaService: BuscaService,
     private geolocation: Geolocation) {
+
+      this.tipoProfissional = this.navParams.get('descricao')
   }
 
   ionViewDidLoad() {
