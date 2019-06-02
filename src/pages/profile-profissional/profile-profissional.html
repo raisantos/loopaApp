@@ -6,10 +6,23 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>ProfileProfissional</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Profile</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-avatar>
+    <img class="circle" src="assets/imgs/perfil.png">
+  </ion-avatar>
+  <p text-center>{{profissional?.id}}</p>
+  <h2 text-center>{{profissional?.nome}}</h2>
+  <p text-center>{{profissional?.email}}</p>
+  <p text-center>{{profissional?.telefone}}</p>
+  <p text-center>{{profissional?.status}}</p>
+  <p text-center>{{profissional?.descricao}}</p>
+  <p text-center>{{profissional?.endereco}}</p>
+  <button ion-button block (click)="editar()"> Editar </button>
 </ion-content>

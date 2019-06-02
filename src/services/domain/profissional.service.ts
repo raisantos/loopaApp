@@ -34,6 +34,17 @@ export class ProfissionalService{
         ); 
     }
 
+    update(id: string, obj : ProfissionalModel){
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/profissionais/${id}`, 
+            obj,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        );
+    }
+
     checkIn(latitude: number, longitude: number){
         return this.http.put(
             `${API_CONFIG.baseUrl}/profissionais/checkin/${latitude}/${longitude}`,

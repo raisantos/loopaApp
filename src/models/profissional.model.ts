@@ -6,4 +6,5 @@ export interface ProfissionalModel{
     location: any;
     status: string;
     descricao: string;
+    endereco: string;
 }
