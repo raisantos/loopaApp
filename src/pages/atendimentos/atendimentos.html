@@ -24,10 +24,10 @@
           {{item?.profissional.nome}}
         </ion-card-title>
         <p>
-          Código do Atendimento: {{item?.codigo}}
+          Código: <b class="blue">{{item?.codigo}}</b>
         </p>
         <p>
-          Status: {{item?.status}}
+          Status: <b class="green" [ngClass]="{'red' : item?.status === 'FECHADO'}">{{item?.status}}</b>
         </p>
       </ion-card-content>
     </ion-card>
