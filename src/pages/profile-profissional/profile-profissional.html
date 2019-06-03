@@ -17,12 +17,11 @@
   <ion-avatar>
     <img class="circle" src="assets/imgs/perfil.png">
   </ion-avatar>
-  <p text-center>{{profissional?.id}}</p>
-  <h2 text-center>{{profissional?.nome}}</h2>
-  <p text-center>{{profissional?.email}}</p>
-  <p text-center>{{profissional?.telefone}}</p>
-  <p text-center>{{profissional?.status}}</p>
-  <p text-center>{{profissional?.descricao}}</p>
-  <p text-center>{{profissional?.endereco}}</p>
-  <button ion-button block (click)="editar()"> Editar </button>
+  <h1 text-center>{{profissional?.nome}}</h1>
+
+  <p class="titulo">Email:</p> <b class="descricao"><p>{{profissional?.email}}</p></b>
+  <p class="titulo">Telefone:</p> <b class="descricao"><p>{{profissional?.telefone}}</p></b>
+  <p class="titulo">Endereço:</p><b class="descricao"><p>{{profissional?.endereco}}</p></b>
+  
+  <button class="botao" ion-button block (click)="editar()"> Editar </button>
 </ion-content>
