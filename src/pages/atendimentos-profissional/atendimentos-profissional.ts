@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AtendimentoService } from '../../services/domain/atendimento.service';
+import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 
 /**
  * Generated class for the AtendimentosProfissionalPage page.
@@ -15,11 +17,43 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AtendimentosProfissionalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  codigo: string;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public atendimentoService: AtendimentoService,
+    public alertCtrl: AlertController
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AtendimentosProfissionalPage');
   }
 
+  confirmar(){
+    console.log(this.codigo);
+    this.atendimentoService.update(this.codigo)
+      .subscribe(response => {
+        this.showInsertOk();
+      },
+      error => {});
+  }
+
+  showInsertOk() {
+    let alert = this.alertCtrl.create({
+      title: 'Sucesso!',
+      message: 'Atendimento registrado com sucesso',
+      enableBackdropDismiss: false,
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
 }

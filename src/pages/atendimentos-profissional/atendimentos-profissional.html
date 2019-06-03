@@ -6,10 +6,18 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>AtendimentosProfissional</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Atendimentos</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
+    <ion-item>
+      <ion-label stacked>Código do Atendimento*</ion-label>
+      <ion-input [(ngModel)]="codigo" type="text" ></ion-input>
+    </ion-item>
+    
+    <button ion-button block (click)="confirmar()" >Confirmar Atendimento</button>
 </ion-content>

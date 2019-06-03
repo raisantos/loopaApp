@@ -25,4 +25,14 @@ export class AtendimentoService {
             }
         );
     }
+
+    update(codigo: string){
+        return this.http.put(
+            `${API_CONFIG.baseUrl}/atendimentos/${codigo}`,
+            { 
+                observe: 'response', 
+                responseType: 'text'
+            }
+        );
+    }
 }
