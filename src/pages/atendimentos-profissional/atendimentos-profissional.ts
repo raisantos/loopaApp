@@ -49,7 +49,7 @@ export class AtendimentosProfissionalPage {
         {
           text: 'Ok',
           handler: () => {
-            this.navCtrl.pop();
+            //this.navCtrl.pop();
           }
         }
       ]
