@@ -16,6 +16,10 @@ export class AtendimentoService {
         return this.http.get<AtendimentoModel[]>(`${API_CONFIG.baseUrl}/atendimentos`);
     }
 
+    findByCodigo(codigo: string): Observable<AtendimentoModel>{
+        return this.http.get<AtendimentoModel>(`${API_CONFIG.baseUrl}/atendimentos/${codigo}`);
+    }
+
     insert(idProfissional: string){
         return this.http.post(
             `${API_CONFIG.baseUrl}/atendimentos/${idProfissional}`,

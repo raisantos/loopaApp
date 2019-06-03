@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AtendimentoModel } from '../../models/atendimento.model';
 import { AtendimentoService } from '../../services/domain/atendimento.service';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { AtendimentoModel } from '../../models/atendimento.model';
 
 /**
- * Generated class for the AtendimentosProfissionalPage page.
+ * Generated class for the DetalhesAtendimentoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,39 +13,28 @@ import { AtendimentoModel } from '../../models/atendimento.model';
 
 @IonicPage()
 @Component({
-  selector: 'page-atendimentos-profissional',
-  templateUrl: 'atendimentos-profissional.html',
+  selector: 'page-detalhes-atendimento',
+  templateUrl: 'detalhes-atendimento.html',
 })
-export class AtendimentosProfissionalPage {
+export class DetalhesAtendimentoPage {
 
-  codigo: string;
   atendimento: AtendimentoModel;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public atendimentoService: AtendimentoService,
-    public alertCtrl: AlertController
-    ) {
+    public alertCtrl: AlertController) {
+      this.atendimento = this.navParams.get('atendimento');
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AtendimentosProfissionalPage');
+    console.log('ionViewDidLoad DetalhesAtendimentoPage');
   }
 
   confirmar(){
-    console.log(this.codigo);
-    this.atendimentoService.findByCodigo(this.codigo)
-      .subscribe(response => {
-        this.atendimento = response;
-        this.navCtrl.push('DetalhesAtendimentoPage', {atendimento: this.atendimento});
-      },
-      error => {});
-  }
-
-  /*confirmar(){
-    console.log(this.codigo);
-    this.atendimentoService.update(this.codigo)
+    console.log(this.atendimento.codigo);
+    this.atendimentoService.update(this.atendimento.codigo)
       .subscribe(response => {
         this.showInsertOk();
       },
@@ -61,11 +50,12 @@ export class AtendimentosProfissionalPage {
         {
           text: 'Ok',
           handler: () => {
-            //this.navCtrl.pop();
+            this.navCtrl.pop();
           }
         }
       ]
     });
     alert.present();
-  }*/
+  }
+
 }
