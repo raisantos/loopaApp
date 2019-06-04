@@ -1,7 +1,7 @@
 page-detalhes-atendimento {
 
     .circle{
-        width: 60%;
+        width: 30%;
         border-radius: 100%;
         margin: 25px auto 0 auto;
     }
@@ -14,13 +14,21 @@ page-detalhes-atendimento {
         float: left;
     }
 
-    .descricao{
+    .descricao1{
         width:75%;
         height: 5%;
         float: left;
+        color: midnightblue;
+    }
+
+    .descricao2{
+        width:75%;
+        height: 5%;
+        float: left;
+        color: darkgreen;
     }
 
     .botao{
-        margin-top: 30%;
+        margin-top: 25%;
     }
 }

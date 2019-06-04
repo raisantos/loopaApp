@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Detalhes Atendimento</ion-title>
+    <ion-title>Detalhes</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,9 +16,8 @@
   </ion-avatar>
   <h1 text-center>{{atendimento?.cliente.nome}}</h1>
   
-  <p class="titulo">Código:</p> <b class="descricao"><p>{{atendimento?.codigo}}</p></b>
-  <p class="titulo">Status:</p> <b class="descricao"><p >{{atendimento?.status}}</p></b>
-  <p class="titulo">Data:</p> <b class="descricao"><p >{{atendimento?.data}}</p></b>
+  <p class="titulo">Código:</p> <b class="descricao1"><p>{{atendimento?.codigo}}</p></b>
+  <p class="titulo">Status:</p> <b class="descricao2"><p >{{atendimento?.status}}</p></b>
   
   <button class="botao" ion-button block (click)="confirmar()"> Confirmar Atendimento </button>
 </ion-content>
