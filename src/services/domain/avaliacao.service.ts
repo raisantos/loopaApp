@@ -40,6 +40,6 @@ export class AvaliacaoService {
     }
 
     getAverageProfissional(idProfissional: string){
-        return this.http.get<number>(`${API_CONFIG.baseUrl}/avaliacoes/media/${idProfissional}`);
+        return this.http.get<string>(`${API_CONFIG.baseUrl}/avaliacoes/media/${idProfissional}`);
     }
 }
